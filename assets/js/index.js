@@ -5,7 +5,7 @@ function showCustomer() {
   document.getElementById("customer-list").innerHTML = '';
   customersList.forEach((customer) => {
     let ul = document.getElementById("customer-list");
-    ul.innerHTML += `<li class="list-group-item" onclick="showForm();loadClient(${customer.nip});">${customer.name} (${customer.nip})</li>`;
+    ul.innerHTML += `<li class="list-group-item" onclick="showForm();loadClient(${customer.nip});">${customer.getCustomerInfo()}</li>`;
   });
   showList();
 }
