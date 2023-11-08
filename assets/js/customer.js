@@ -1,17 +1,22 @@
-function Customer(){
-    this.name = "";
-    this.nip = "";
-    this.city = "";
-    this.street = "";
-    this.houseNumber = "";
-    this.zipCode = "";
-    this.comments = "";
-    this.industry = "";
-    this.active = true
+class Customer{
+    constructor(){}
+
+    name = "";
+    nip = "";
+    city = "";
+    street = "";
+    houseNumber = "";
+    zipCode = "";
+    comments = "";
+    industry = "";
+    active = true
 }
 
-function Supplier(accountNumber){
-    this.accountNumber = accountNumber;
-    this.invoices = [];
+class Supplier extends Customer{
+    constructor(accountNumber){
+        accountNumber = accountNumber;
+        super();
+    }
+    accountNumber = "";
+    invoices = [];
 }
-Supplier.prototype = new Customer();
