@@ -22,17 +22,18 @@ function showList(){
 
 function save(event) {
   event.preventDefault();
-  let newCustomer = {
-      name: document.getElementById("company-name").value,
-      nip: document.getElementById("nip").value,
-      city: document.getElementById("city").value,
-      street: document.getElementById("street").value,
-      houseNumber: document.getElementById("house-number").value,
-      zipCode: document.getElementById("zipcode").value,
-      comments: document.getElementById("comments").value,
-      industry: document.getElementById("industry").value,
-      active: document.getElementById("active").checked,
-  }
+  let newCustomer = new Customer();
+  newCustomer.name = document.getElementById("company-name").value;
+  newCustomer.nip = document.getElementById("nip").value;
+  newCustomer.city = document.getElementById("city").value;
+  newCustomer.street = document.getElementById("street").value;
+  newCustomer.houseNumber = document.getElementById("house-number").value;
+  newCustomer.zipCode = document.getElementById("zipcode").value;
+  newCustomer.comments = document.getElementById("comments").value;
+  newCustomer.industry = document.getElementById("industry").value;
+  newCustomer.active = document.getElementById("active").checked;
+
+  console.log(newCustomer)
   let foundCustomer = null;
   for (let i = 0; i < customersList.length; i++) {
     if(customersList[i].nip == newCustomer.nip){
@@ -49,8 +50,9 @@ function save(event) {
 
 function loadClient(nip) {
   let newCustomer = customersList.find((customer) => customer.nip == nip);
+  console.log(newCustomer)
   if(newCustomer == null){
-    newCustomer = getEmptyCustomer();
+    newCustomer = new Customer()
   }
   document.getElementById("company-name").value = newCustomer.name
   document.getElementById("nip").value = newCustomer.nip
@@ -61,18 +63,4 @@ function loadClient(nip) {
   document.getElementById("comments").value = newCustomer.comments
   document.getElementById("industry").value = newCustomer.industry
   document.getElementById("active").checked = newCustomer.active
-}
-
-function getEmptyCustomer(){
-  return {
-        name: "",
-        nip: '',
-        city: "",
-        street: "",
-        houseNumber: '',
-        zipCode: '',
-        comments: "",
-        industry: '',
-        active: true,
-    };
 }
