@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-customer-form',
-  standalone: true,
-  imports: [CommonModule],
+  standalone: false,
   templateUrl: './customer-form.component.html',
   styleUrl: './customer-form.component.scss'
 })

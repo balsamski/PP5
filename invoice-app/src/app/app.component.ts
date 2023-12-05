@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { CustomerFormComponent } from './components/customer-form/customer-form.component';
+import { InvoiceModule } from './invoice/invoice.module';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, CustomerFormComponent],
+  imports: [CommonModule, RouterOutlet, InvoiceModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
