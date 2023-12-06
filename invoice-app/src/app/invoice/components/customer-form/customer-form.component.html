@@ -2,50 +2,51 @@
     <h1 id="login-form">Form</h1>
     <div class="d-flex justify-content-center">
       <div class="w-50">
-        <form>
+        <form (ngSubmit)="onSubmitForm()">
           <div class="mb-3 content-center">
             <label for="company-name" class="form-label">Company name</label>
-            <input type="text" class="form-control" id="company-name">
+            <input type="text" class="form-control" id="company-name" name="name" [(ngModel)] ="customer.name">
           </div>
           <div class="mb-3">
             <label for="nip" class="form-label">NIP</label>
-            <input type="number" class="form-control" id="nip" required>
+            <input type="number" class="form-control" id="nip" name="nip" [(ngModel)] ="customer.nip" required>
           </div>
           <div class="mb-3">
               <label for="city" class="form-label">City</label>
-              <input type="text" class="form-control" id="city" required>
+              <input type="text" class="form-control" name="city" [(ngModel)] ="customer.city" id="city" required>
             </div>
             <div class="mb-3">
               <label for="street" class="form-label">Street</label>
-              <input type="text" class="form-control" id="street" required>
+              <input type="text" class="form-control" name="street" [(ngModel)] ="customer.street" id="street" required>
             </div>
             <div class="mb-3">
               <label for="house-number" class="form-label">House nr</label>
-              <input type="TEXT" class="form-control" id="house-number">
+              <input type="TEXT" class="form-control" name="houseNumber" [(ngModel)] ="customer.houseNumber" id="house-number">
             </div>
             <div class="mb-3">
               <label for="zipcode" class="form-label">Zip code</label>
-              <input type="text" class="form-control" id="zipcode" required>
+              <input type="text" class="form-control" name="zipCode" [(ngModel)] ="customer.zipCode" id="zipCode" required>
             </div>
           <div>
             <div class="mb-3">
               <label for="comments" class="form-label">Comments</label>
-              <textarea type="text" class="form-control" id="comments"></textarea>
+              <textarea type="text" class="form-control" name="comments" [(ngModel)] ="customer.comments" id="comments"></textarea>
             </div>
             <div class="mb-3">
               <label for="industry" class="form-label">Industry</label>
-              <select type="number" class="form-control" id="industry">
+              <select type="number" class="form-control" name="industry" [(ngModel)] ="customer.industry" id="industry">
                 <option value="1">Informatyka</option>
                 <option value="2">Kosmetyka</option>
               </select>
             </div>
             <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="active">
+              <input type="checkbox" class="form-check-input" name="active" [(ngModel)] ="customer.active" id="active">
               <label class="form-check-label" for="active">Active</label>
             </div>
           </div>
           <button type="submit" class="btn btn-primary" >Save</button>
         </form>
+        {{ customer | json}}
       </div>
     </div>
   </div>
