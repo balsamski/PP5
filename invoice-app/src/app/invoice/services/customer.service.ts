@@ -10,8 +10,12 @@ export class CustomerService {
 
   constructor() { }
 
-  addCustomer(customer: Customer):Customer[]{
+  addCustomer(customer: Customer): Customer[] {
     this.customersList.push(customer);
+    return this.customersList;
+  }
+
+  getCustomers(): Customer[] {
     return this.customersList;
   }
 }
