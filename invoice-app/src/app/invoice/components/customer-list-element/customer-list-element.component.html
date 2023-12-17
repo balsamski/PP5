@@ -1,1 +1,1 @@
-<li class="list-group-item">{{customer.getCustomerInfo()}}</li>
+<li class="list-group-item" [ngStyle]="!customer.active ? {'color': 'red'} : {}">{{customer.getCustomerInfo()}}</li>
