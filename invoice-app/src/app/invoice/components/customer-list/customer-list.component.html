@@ -1,0 +1,10 @@
+<div id="client-list">
+    <ul class="list-group" id="customer-list">
+        <app-customer-list-element
+            *ngFor="let customer of customersList" 
+            [customer]="customer"
+            (deletedCustomerEvent)="deletedCustomer($event)"
+        ></app-customer-list-element>
+    </ul>
+    <button type="button" class="btn btn-primary" [routerLink]="'/invoice/customer/form/'">Add new customer</button>
+</div>
