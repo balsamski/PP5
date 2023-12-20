@@ -18,4 +18,10 @@ export class CustomerService {
   getCustomers(): Customer[] {
     return this.customersList;
   }
+  
+  removeCustomer(removedCustomer: Customer) {
+    this.customersList = this.customersList.filter(function (customer: Customer) {
+      return customer.nip !== removedCustomer.nip;
+    });
+  }
 }
