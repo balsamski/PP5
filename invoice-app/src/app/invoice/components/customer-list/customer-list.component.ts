@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Customer } from '../../models/customer';
-import { Router } from '@angular/router';
 import { CustomerService } from '../../services/customer.service';
 
 @Component({
@@ -9,17 +8,18 @@ import { CustomerService } from '../../services/customer.service';
   templateUrl: './customer-list.component.html',
   styleUrl: './customer-list.component.scss'
 })
-export class CustomerListComponent implements OnInit{
+export class CustomerListComponent implements OnInit, OnDestroy{
 
     customersList: Customer[] = [];
-
-
+    
     constructor(
-      private router: Router,
       private customerService: CustomerService
     ) { }
 
     ngOnInit(){
       this.customersList = this.customerService.getCustomers();
+    }
+    ngOnDestroy(){
+      console.log('zamykam komponent')
     }
 }
