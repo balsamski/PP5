@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Customer } from '../../models/customer';
 
 @Component({
@@ -11,4 +11,11 @@ export class CustomerListElementComponent {
 
   @Input()
   customer: Customer = new Customer();
+
+  @Output()
+  deletedCustomerEvent = new EventEmitter<Customer>();
+
+  onDeletedCustomer(customer: Customer){
+    this.deletedCustomerEvent.emit(customer);
+  }
 }

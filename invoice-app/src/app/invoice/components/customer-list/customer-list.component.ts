@@ -11,7 +11,7 @@ import { CustomerService } from '../../services/customer.service';
 export class CustomerListComponent implements OnInit, OnDestroy{
 
     customersList: Customer[] = [];
-    
+
     constructor(
       private customerService: CustomerService
     ) { }
@@ -21,5 +21,9 @@ export class CustomerListComponent implements OnInit, OnDestroy{
     }
     ngOnDestroy(){
       console.log('zamykam komponent')
+    }
+
+    deletedCustomer(customer: Customer) {
+      alert('kasujemy klienta o NIPie' + customer.nip);
     }
 }
