@@ -2,10 +2,10 @@
     <h1 id="login-form">Form</h1>
     <div class="d-flex justify-content-center">
       <div class="w-50">
-        <form (ngSubmit)="onSubmitForm()">
+        <form (ngSubmit)="onSubmitForm(customerForm)"  #customerForm="ngForm">
           <div class="mb-3 content-center">
             <label for="company-name" class="form-label">Company name</label>
-            <input type="text" class="form-control" id="company-name" name="name" [(ngModel)] ="customer.name">
+            <input type="text" class="form-control" id="company-name" name="name" [(ngModel)] ="customer.name" required>
           </div>
           <div class="mb-3">
             <label for="nip" class="form-label">NIP</label>
