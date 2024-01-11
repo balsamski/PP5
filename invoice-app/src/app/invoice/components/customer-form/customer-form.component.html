@@ -4,28 +4,46 @@
       <div class="w-50">
         <form (ngSubmit)="onSubmitForm(customerForm)"  #customerForm="ngForm">
           <div class="mb-3 content-center">
-            <label for="company-name" class="form-label">Company name</label>
-            <input type="text" class="form-control" id="company-name" name="name" [(ngModel)] ="customer.name" required>
+            <label for="company-name" class="form-label" >Company name</label>
+            <input type="text" class="form-control" id="company-name" name="name" #name="ngModel" [(ngModel)] ="customer.name" required>
+            <div class="invalid-feedback" [hidden]="name.valid || name.pristine" class="alert alert-danger">
+              Pole nazwa nie może być puste
+            </div>
           </div>
           <div class="mb-3">
             <label for="nip" class="form-label">NIP</label>
-            <input type="number" class="form-control" id="nip" name="nip" [(ngModel)] ="customer.nip" required>
+            <input type="number" class="form-control" id="nip" name="nip" #nip="ngModel"  [(ngModel)] ="customer.nip" required>
+            <div class="invalid-feedback" [hidden]="nip.valid || nip.pristine" class="alert alert-danger">
+              Pole NIP nie może być puste
+            </div>
           </div>
           <div class="mb-3">
               <label for="city" class="form-label">City</label>
-              <input type="text" class="form-control" name="city" [(ngModel)] ="customer.city" id="city" required>
+              <input type="text" class="form-control" name="city" #city="ngModel"  [(ngModel)] ="customer.city" id="city" required>
+              <div class="invalid-feedback" [hidden]="city.valid || city.pristine" class="alert alert-danger">
+                Pole miasto nie może być puste
+              </div>
             </div>
             <div class="mb-3">
               <label for="street" class="form-label">Street</label>
-              <input type="text" class="form-control" name="street" [(ngModel)] ="customer.street" id="street" required>
+              <input type="text" class="form-control" name="street" #street="ngModel" [(ngModel)] ="customer.street" id="street" required>
+              <div class="invalid-feedback" [hidden]="street.valid || street.pristine" class="alert alert-danger">
+                Pole ulica nie może być puste
+              </div>
             </div>
             <div class="mb-3">
               <label for="house-number" class="form-label">House nr</label>
-              <input type="TEXT" class="form-control" name="houseNumber" [(ngModel)] ="customer.houseNumber" id="house-number">
+              <input type="TEXT" class="form-control" name="houseNumber" #houseNumber="ngModel" [(ngModel)] ="customer.houseNumber" id="house-number">
+              <div class="invalid-feedback" [hidden]="houseNumber.valid || houseNumber.pristine" class="alert alert-danger">
+                Pole numer domu nie może być puste
+              </div>
             </div>
             <div class="mb-3">
               <label for="zipcode" class="form-label">Zip code</label>
-              <input type="text" class="form-control" name="zipCode" [(ngModel)] ="customer.zipCode" id="zipCode" required>
+              <input type="text" class="form-control" name="zipCode" #zipCode="ngModel" [(ngModel)] ="customer.zipCode" id="zipCode" required>
+              <div class="invalid-feedback" [hidden]="zipCode.valid || zipCode.pristine" class="alert alert-danger">
+                Pole kod pocztowy nie może być puste
+              </div>
             </div>
           <div>
             <div class="mb-3">
