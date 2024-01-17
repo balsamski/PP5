@@ -1,18 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Customer } from '../models/customer';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
 
+  url: string = 'http://pp5.balsamski.pl/index.php/api/123/';
   customersList: Customer[] = [];
 
-  constructor() { }
+  constructor(
+    private httpClient: HttpClient
+  ) { }
 
-  addCustomer(customer: Customer): Customer[] {
-    this.customersList.push(customer);
-    return this.customersList;
+  addCustomer(customer: Customer): Observable<Customer[]> {
+    return this.httpClient.post<Customer[]>(
+      this.url + 'customers',
+      customer
+    );
   }
 
   getCustomers(): Customer[] {

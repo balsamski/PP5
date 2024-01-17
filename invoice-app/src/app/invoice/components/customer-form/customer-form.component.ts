@@ -20,10 +20,11 @@ export class CustomerFormComponent {
   ) { }
 
   onSubmitForm(form: NgForm){
-    console.log(form.form.valid)
-    console.log(this.customer);
-    let result  = this.customerService.addCustomer(this.customer);
-    console.log(result);
-    // this.router.navigate(['/invoice/customer/list']);
+    this.customerService
+      .addCustomer(this.customer)
+      .subscribe((data) => {
+        console.log(data);
+        this.router.navigate(['/invoice/customer/list']);
+      })
   }
 }

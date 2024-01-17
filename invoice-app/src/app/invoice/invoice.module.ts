@@ -5,6 +5,8 @@ import { CustomersRoutingModule } from './invoice-routing.module';
 import { CustomerListComponent } from './components/customer-list/customer-list.component';
 import { FormsModule } from '@angular/forms';
 import { CustomerListElementComponent } from './components/customer-list-element/customer-list-element.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CustomerService } from './services/customer.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { CustomerListElementComponent } from './components/customer-list-element
   imports: [
     CommonModule,
     CustomersRoutingModule,
-    FormsModule
-  ]
+    FormsModule,
+    HttpClientModule
+  ],
+  providers:[CustomerService]
 })
 export class InvoiceModule { }
