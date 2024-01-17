@@ -2,18 +2,21 @@ import { Injectable } from '@angular/core';
 import { Customer } from '../models/customer';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
 
-  url: string = 'http://pp5.balsamski.pl/index.php/api/123/customers/';
+  url: string = `${environment.apiUrl}${environment.indexNo}/customers/`;
   customersList: Customer[] = [];
 
   constructor(
     private httpClient: HttpClient
-  ) { }
+  ) { 
+    console.log(this.url)
+  }
 
   addCustomer(customer: Customer): Observable<Customer[]> {
     return this.httpClient.post<Customer[]>(
