@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Customer } from '../models/customer';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { Observable, map } from 'rxjs';
 })
 export class CustomerService {
 
-  url: string = 'http://pp5.balsamski.pl/index.php/api/123/';
+  url: string = 'http://pp5.balsamski.pl/index.php/api/123/customers/';
   customersList: Customer[] = [];
 
   constructor(
@@ -17,14 +17,14 @@ export class CustomerService {
 
   addCustomer(customer: Customer): Observable<Customer[]> {
     return this.httpClient.post<Customer[]>(
-      this.url + 'customers',
+      this.url,
       customer
     );
   }
 
   getCustomers():  Observable<Customer[]>	 {
     return this.httpClient.get<Customer[]>(
-      this.url + 'customers'
+      this.url
     ).pipe(
       map(
         (customers: Customer[]) => customers.map(customer => new Customer().deserialize(customer))
@@ -33,8 +33,12 @@ export class CustomerService {
   }
   
   removeCustomer(removedCustomer: Customer) {
-    this.customersList = this.customersList.filter(function (customer: Customer) {
-      return customer.nip !== removedCustomer.nip;
+    const headers = new HttpHeaders({
+      'Authorization': 'haslo_haslo'
     });
+
+    return this.httpClient.delete<Customer[]>(
+      this.url + removedCustomer.nip, { headers }
+    );
   }
 }

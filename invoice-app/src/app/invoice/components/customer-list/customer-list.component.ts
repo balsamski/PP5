@@ -25,8 +25,9 @@ export class CustomerListComponent implements OnInit, OnDestroy{
 
     deletedCustomer(customer: Customer) {
       alert('kasujemy klienta o NIPie' + customer.nip);
-      this.customerService.removeCustomer(customer);
-      this.loadCustomers();
+      this.customerService.removeCustomer(customer).subscribe(() => {
+        this.loadCustomers();
+      })
     }
 
     loadCustomers(){
