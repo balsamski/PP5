@@ -17,7 +17,7 @@ export class CustomerListComponent implements OnInit, OnDestroy{
     ) { }
 
     ngOnInit(){
-      this.customersList = this.customerService.getCustomers();
+      this.loadCustomers();
     }
     ngOnDestroy(){
       console.log('zamykam komponent')
@@ -25,6 +25,16 @@ export class CustomerListComponent implements OnInit, OnDestroy{
 
     deletedCustomer(customer: Customer) {
       alert('kasujemy klienta o NIPie' + customer.nip);
-      this.customerService.removeCustomer(customer);
+      this.customerService.removeCustomer(customer).subscribe(() => {
+        this.loadCustomers();
+      })
+    }
+
+    loadCustomers(){
+      this.customerService.getCustomers()
+        .subscribe((data: Customer[]) =>{
+          this.customersList = data as Customer[];
+          console.log(data);
+      })
     }
 }
