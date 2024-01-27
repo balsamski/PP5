@@ -1,0 +1,22 @@
+{
+	"name": "Node.js",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": { "VARIANT": "18" }
+	},
+	"settings": { 
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
+	"extensions": [
+		"dbaeumer.vscode-eslint",
+		"angular.ng-template",
+		"johnpapa.angular2",
+		"sibiraj-s.vscode-scss-formatter",
+		"gruntfuggly.todo-tree",
+		"nrwl.angular-console",
+		"formulahendry.auto-rename-tag",
+		"coenraads.bracket-pair-colorizer-2",
+		"esbenp.prettier-vscode"
+	],
+	"remoteUser": "node"
+}

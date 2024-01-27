@@ -4,9 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class CustomerService {
   url: string = `${environment.apiUrl}${environment.indexNo}/customers/`;
   customersList: Customer[] = [];
